@@ -8,23 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @RestController
 @RequestMapping("/api")
 public class PriceResource {
 
-	private final PriceService priceService;
+    private final PriceService priceService;
 
     public PriceResource(PriceService priceService) {
         this.priceService = priceService;
     }
 
-    @GetMapping(path="/price" )
-    public ResponseEntity<PriceGetDto> getPrice(@RequestParam(value = "date") Date date,
-                                                @RequestParam(value = "productId") Long productId,
-                                                @RequestParam(value= "brandId") Long brandId){
-        return priceService.getPrice(productId,brandId,date)
+    @GetMapping(path = "/price")
+    public ResponseEntity<PriceGetDto> getPrice(@RequestParam(value = "date") LocalDateTime date,
+                                                @RequestParam(value = "productId") Integer productId,
+                                                @RequestParam(value = "brandId") Long brandId) {
+
+        return priceService.getPrice(brandId, productId, java.util.Date
+                .from(date.atZone(ZoneId.systemDefault())
+                        .toInstant()))
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

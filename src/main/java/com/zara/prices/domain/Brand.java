@@ -1,6 +1,7 @@
 package com.zara.prices.domain;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,16 +12,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="brands")
+@Table(name = "BRANDS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Brand {
-	
-	@Id
-	private Long id;
-	
-	@NotNull
-	private String name;
+
+    @Id
+    private Long id;
+
+    @NotNull
+    @Column(name = "NAME", unique = true, nullable = false)
+    private String name;
 
 }
