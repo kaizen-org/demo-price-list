@@ -30,7 +30,7 @@ class PriceResourceIT {
     @Autowired
     ObjectMapper objectMapper;
 
-    protected static Stream<Arguments> provideProjectsParameters() {
+    protected static Stream<Arguments> provideParameters() {
          return Stream.of(
                 Arguments.of("2020-06-14 10:00:00", new PriceGetDto(1L,new Date(), new Date(),1,35455,0,35.5,"EUR")),
                 Arguments.of("2020-06-14 16:00:00", new PriceGetDto(1L,new Date(), new Date(),2,35455,1,25.45,"EUR")),
@@ -42,7 +42,7 @@ class PriceResourceIT {
     }
 
     @ParameterizedTest
-    @MethodSource("provideProjectsParameters")
+    @MethodSource("provideParameters")
     void shouldObtainPrice(String date, PriceGetDto resultPriceDto) throws Exception {
         MvcResult resultRequest = restMockMvc.perform(get("/api/price?")
                 .param("brandId","1")
