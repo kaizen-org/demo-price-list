@@ -21,6 +21,14 @@ public class PriceResource {
         this.priceService = priceService;
     }
 
+    /**
+     * Gets price.
+     *
+     * @param date      the date
+     * @param productId the product id
+     * @param brandId   the brand id
+     * @return the price
+     */
     @GetMapping(path = "/price")
     public ResponseEntity<PriceGetDto> getPrice(@RequestParam(value = "date") LocalDateTime date,
                                                 @RequestParam(value = "productId") Integer productId,

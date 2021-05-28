@@ -24,12 +24,11 @@ public class PriceService {
     }
 
     /**
-     * Get price optional.
+     * Get price.
      *
      * @param brandId   the brandId
-     * @param brandId   the brand id
      * @param applyDate the apply date
-     * @return the optional
+     * @return the optional price
      */
     public Optional<PriceGetDto> getPrice(Long brandId, Integer productId, Date applyDate) {
         return priceRepository.findPriceByIdAndBrandBetweenDates(brandId, productId, applyDate).map(mapper::map);
