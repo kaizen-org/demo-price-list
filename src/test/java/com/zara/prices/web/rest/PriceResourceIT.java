@@ -21,8 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = DemoApplication.class)
 @AutoConfigureMockMvc
-//
-//@Sql({"/insertPrices.sql"})
+
 class PriceResourceIT {
 
     @Autowired
@@ -44,9 +43,6 @@ class PriceResourceIT {
 
     @ParameterizedTest
     @MethodSource("provideProjectsParameters")
-    //@Test
-    //@Sql({"./schema.sql","./insertPrices.sql"})
-
     void shouldObtainPrice(String date, PriceGetDto resultPriceDto) throws Exception {
         MvcResult resultRequest = restMockMvc.perform(get("/api/price?")
                 .param("brandId","1")

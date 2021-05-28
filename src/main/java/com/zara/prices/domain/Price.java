@@ -27,29 +27,29 @@ public class Price {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "BRAND_ID")
     private Brand brand;
 
-    @Column(name = "START_DATE")
+    @Column(name = "START_DATE", nullable=false)
     private Date startDate;
 
-    @Column(name = "END_DATE")
+    @Column(name = "END_DATE", nullable=false)
     private Date endDate;
 
-    @Column(name = "PRICE_LIST")
+    @Column(name = "PRICE_LIST", nullable=false)
     private Integer priceListId;
 
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "PRODUCT_ID", nullable=false)
     private Integer productId;
 
-    @Column(name = "PRIORITY")
+    @Column(name = "PRIORITY", nullable=false)
     private Integer priority;
 
-    @Column(name = "PRICE")
+    @Column(name = "PRICE", nullable=false)
     private Double price;
 
-    @Column(name = "CURR")
+    @Column(name = "CURR", nullable=false)
     private String currency;
 
 }
