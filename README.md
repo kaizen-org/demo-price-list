@@ -9,7 +9,7 @@ Como la consulta puede devolver varios registros y solo nos interesa la informac
 
 https://github.com/kaizen-org/demo-price-list/blob/787911d74778fce48df73db8e05854117cd2cfc5/src/main/java/com/zara/prices/repository/PriceRepository.java#L32
 
-PROS: Todo queda en la interfaz de repository y es de fail mantenimiento
+PROS: Todo queda en la interfaz de repository y es de facil mantenimiento
 
 CONTRAS: Todos los registros que se han obtenido de la consulta se han instanciado como una entity Java aunque solo se vaya a usar el primero (problemas de rendimiento si son muchos)
 
@@ -20,7 +20,7 @@ https://github.com/kaizen-org/demo-price-list/blob/c038fb4a268f12d3fd6a7166c4c2b
 
 PROS: Solo se instancia la entity que se usará 
 
-CONTRAS: El código es mas complejo, en caso de que no supongo un problema de rendicmiento esta solución pueder ser sobreingenieria
+CONTRAS: El código es mas complejo, en caso de que no suponga un problema de rendimiento esta solución pueder ser sobreingenieria
 
   
   ![image](https://user-images.githubusercontent.com/924807/119991972-52e57300-bfca-11eb-8602-db3e130a091f.png)
